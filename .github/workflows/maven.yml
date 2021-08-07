@@ -1,6 +1,11 @@
 name: CI / CD with Azure App Service
 
 on:
+  push:
+    branches: [ main ]  
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
   workflow_dispatch:    
 
 env:
@@ -10,6 +15,7 @@ env:
 
 jobs:
   build:
+    name: Maven Build
     runs-on: ubuntu-latest
     steps:
     - name: Step 1 -> Checkout main branch from Github
